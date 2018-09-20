@@ -38,9 +38,9 @@
                 <span>购买类型：肺笛单品</span>
                 <div class="cale-box">
                   <div class="cale">
-                    <Button size='small'>-</Button>
+                    <Button size='small' disabled>-</Button>
                     <span>{{good.count}}</span>
-                    <Button size='small' @click="$store.commit('increaseCount',good.id)">+</Button>
+                    <Button size='small' disabled >+</Button>
                   </div>
                   <span>￥{{good.price*good.count}}</span>
                 </div>
@@ -49,7 +49,7 @@
             <div class="bottom" v-if="good.type==='completed'">
               <Button size='small'>申请退款</Button>
               <Button size='small'>再次购买</Button>
-              <Button size='small'>查看物流</Button>
+              <Button size='small' @click="$router.push('/tracking/trackdone')">查看物流</Button>
               <Button size='small' type='warning'  @click="confirmGoods(good.id,good.type)" 
               :disabled='good.type==="completed"'>{{good.type!=='completed'?'确认收货':'已完成'}}</Button>
             </div>
@@ -69,7 +69,7 @@
               <div class="bottom" v-if="good.type==='isReceive'">
               <Button size='small'>申请退款</Button>
               <Button size='small'>再次购买</Button>
-              <Button size='small'>查看物流</Button>
+              <Button size='small' @click="$router.push('/tracking/trackinfo')">查看物流</Button>
               <Button size='small' type='warning'  @click="confirmGoods(good.id,good.type)" 
               :disabled='good.type==="completed"'>{{good.type!=='completed'?'确认收货':'已完成'}}</Button>
             </div>
@@ -218,13 +218,13 @@ export default {
                 justify-content: space-between;
                 .cale {
                   display: flex;
-                  width: 1.5rem;
+                  width: 1.3rem;
                   height: 0.45rem;
                   justify-content: space-between;
                   > span {
                     width: 0.6rem;
                     line-height: 0.45rem;
-                    border: 1px solid #ccc;
+                    border: 1px solid #dcdee2;
                     text-align: center;
                   }
                   > button:first-child {

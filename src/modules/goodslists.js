@@ -20,24 +20,24 @@ const state = {
     "type": "completed",
     "id": 2
   },
-  {
-    "img": "http://pf9cvp4yn.bkt.clouddn.com/goods-pic_03.png",
-    "name": "美国lungflute 正品 “肺笛®” 正式进入中国",
-    "count": 1,
-    "price": "2888",
-    "create_time": "2018-09-20T08:59:38.817Z",
-    "type": "isPay",
-    "id": 3
-  },
-  {
-    "img": "http://pf9cvp4yn.bkt.clouddn.com/goods-pic_03.png",
-    "name": "美国lungflute 正品 “肺笛®” 正式进入中国",
-    "count": 1,
-    "price": "2888",
-    "create_time": "2018-09-20T08:59:38.973Z",
-    "type": "isPay",
-    "id": 4
-  },
+  // {
+  //   "img": "http://pf9cvp4yn.bkt.clouddn.com/goods-pic_03.png",
+  //   "name": "美国lungflute 正品 “肺笛®” 正式进入中国",
+  //   "count": 1,
+  //   "price": "2888",
+  //   "create_time": "2018-09-20T08:59:38.817Z",
+  //   "type": "isPay",
+  //   "id": 3
+  // },
+  // {
+  //   "img": "http://pf9cvp4yn.bkt.clouddn.com/goods-pic_03.png",
+  //   "name": "美国lungflute 正品 “肺笛®” 正式进入中国",
+  //   "count": 1,
+  //   "price": "2888",
+  //   "create_time": "2018-09-20T08:59:38.973Z",
+  //   "type": "isPay",
+  //   "id": 4
+  // },
   {
     "img": "http://pf9cvp4yn.bkt.clouddn.com/goods-pic_03.png",
     "name": "美国lungflute 正品 “肺笛®” 正式进入中国",
@@ -74,15 +74,15 @@ const state = {
     "type": "isReceive",
     "id": 8
   },
-  {
-    "img": "http://pf9cvp4yn.bkt.clouddn.com/goods-pic_03.png",
-    "name": "美国lungflute 正品 “肺笛®” 正式进入中国",
-    "count": 1,
-    "price": "2888",
-    "create_time": "2018-09-20T08:59:42.868Z",
-    "type": "isPay",
-    "id": 9
-  },
+  // {
+  //   "img": "http://pf9cvp4yn.bkt.clouddn.com/goods-pic_03.png",
+  //   "name": "美国lungflute 正品 “肺笛®” 正式进入中国",
+  //   "count": 1,
+  //   "price": "2888",
+  //   "create_time": "2018-09-20T08:59:42.868Z",
+  //   "type": "isPay",
+  //   "id": 9
+  // },
   {
     "img": "http://pf9cvp4yn.bkt.clouddn.com/goods-pic_03.png",
     "name": "美国lungflute 正品 “肺笛®” 正式进入中国",

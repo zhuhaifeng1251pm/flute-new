@@ -9,6 +9,12 @@ import FluteInfo from "../components/FluteInfo"; //导入相应的组件
 import Personal from '../components/Personal'
 import Register from '../components/Register'
 import PhoneLogin from '../components/PhoneLogin'
+import Tracking from '../components/Tracking'
+import TrackInfo from '../components/TrackInfo'
+import TrackDone from '../components/TrackDone'
+import ShoppingCart from '../components/ShoppingCart'
+
+
 
 import Vue from "vue"; //导入vue
 Vue.use(VueRouter);
@@ -23,6 +29,14 @@ const routes = [
   { path: "/personal", component: Personal },
   { path: "/register", component: Register },
   { path: "/phonelogin", component: PhoneLogin },
+  { path: "/shoppingcart", component: ShoppingCart },
+  { path: "/tracking", component: Tracking,
+    children:[
+      {path:"trackinfo",component:TrackInfo},
+      {path:"trackdone",component:TrackDone}
+    ]
+  },
+
 ];
 const router = new VueRouter({
   mode: "history", //去掉模拟的/#/
