@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <header>
-      <Top :title='title' :handleBack='handleBack' />
+      <Top title='个人中心' :handleBack='handleBack' />
       <div class="banner"></div>
       <nav>
         <ul>
@@ -88,9 +88,6 @@ export default {
         Top,
         Footer
     },
-    data: () => ({
-        title: "个人中心"
-    }),
     methods: {
         handleBack() {
             this.$router.push("/");
@@ -104,12 +101,13 @@ export default {
                 price: "2888",
                 create_time: new Date(),
                 type: "isPay",
-                id: shortId()
+                id: shortId(),
+                is_selected:true
             };
             this.$store.commit("addShoppingCar", newGoods);
         },
         handleToCart() {
-          this.$router.push("/shoppingcart");
+          this.$router.push("/shoppingcart/cartlists");
         }
     }
 };

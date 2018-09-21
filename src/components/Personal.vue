@@ -1,7 +1,7 @@
 <template>
   <div class="personal">
     <header>
-      <Top :title='title' :handleBack='handleBack' />
+      <Top title="个人资料" :handleBack='handleBack' />
     </header>
     <div class="main">
       <img src="http://pcgnine5c.bkt.clouddn.com/timg.jpg" alt="">
@@ -44,9 +44,6 @@ export default {
     components: {
         Top
     },
-    data: () => ({
-        title: "个人资料"
-    }),
     methods: {
         handleBack() {
             this.$router.push("/home");

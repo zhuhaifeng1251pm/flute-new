@@ -1,7 +1,7 @@
 <template>
   <div class="myorder">
     <header>
-      <Top :title='title' :handleBack='handleBack' />
+      <Top title="订单中心" :handleBack='handleBack' />
     </header>
     <div class="main">
       <nav>
@@ -88,9 +88,6 @@ import Top from "./top/Top";
 import Footer from "./footer/Footer";
 export default {
   name: "myorder",
-  data: () => ({
-    title: "订单中心"
-  }),
   components: {
     Top,
     Footer
