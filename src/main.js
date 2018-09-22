@@ -18,7 +18,7 @@ Vue.component("Radio", Radio);
 Vue.component("RadioGroup", RadioGroup);
 Vue.component("Input", Input);
 Vue.component("v-distpicker", VDistpicker);
-Vue.component("Switch", Switch);
+Vue.component("i-switch", Switch);
 
 Vue.config.productionTip = false;
 new Vue({
