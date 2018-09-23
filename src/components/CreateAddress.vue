@@ -1,46 +1,46 @@
 <template>
-  <div class="create-address">
-    <Top title='新建收货地址' :handleBack='handleBack' />
-    <div class="main">
-      <div class="detail-address">
-        <ul>
-          <li>
-            <span>收货人：</span>
-            <Input v-model="newName" clearable />
-          </li>
-          <li>
-            <span>联系方式：</span>
-            <Input v-model="newTellphone" clearable />
-          </li>
-          <li @click="handleOpen()">
-            <span>所在地区：</span>
-            <Input v-model="newArea" clearable/>
-          </li>
-          <li>
-            <span>
-              <span>详细地址:</span>
-            </span>
-            <Input v-model="newAddress" clearable /> </li>
-        </ul>
-      </div>
-      <div class="is-default">
-        <div class="left">
-          <h4>
-            <span>设为默认地址:</span>
-          </h4>
-          <span>注：每次下单时会使用地址</span>
+    <div class="create-address">
+        <Top title='新建收货地址' :handleBack='handleBack' />
+        <div class="main">
+            <div class="detail-address">
+                <ul>
+                    <li>
+                        <span>收货人：</span>
+                        <Input v-model="newName" clearable />
+                    </li>
+                    <li>
+                        <span>联系方式：</span>
+                        <Input v-model="newTellphone" clearable />
+                    </li>
+                    <li @click="handleOpen()">
+                        <span>所在地区：</span>
+                        <Input v-model="newArea" clearable/>
+                    </li>
+                    <li>
+                        <span>
+                            <span>详细地址:</span>
+                        </span>
+                        <Input v-model="newAddress" clearable /> </li>
+                </ul>
+            </div>
+            <div class="is-default">
+                <div class="left">
+                    <h4>
+                        <span>设为默认地址:</span>
+                    </h4>
+                    <span>注：每次下单时会使用地址</span>
+                </div>
+                <div class="right">
+                    <i-switch size="large" v-model="setDefault">
+                        <span slot="open">设置</span>
+                        <span slot="close">取消</span>
+                    </i-switch>
+                </div>
+            </div>
         </div>
-        <div class="right">
-          <i-switch size="large" v-model="setDefault">
-            <span slot="open">设置</span>
-            <span slot="close">取消</span>
-          </i-switch>
-        </div>
-      </div>
+        <Button type='warning' @click="addNewAddress">保存</Button>
+        <Address ref='thirdAddress' :getAddress='getAddress' />
     </div>
-    <Button type='warning' @click="addNewAddress">保存并使用</Button>
-    <Address ref='thirdAddress' :getAddress='getAddress' /> {{$store.state.address.address}}
-  </div>
 </template>
 <script>
 import Address from "./Address";
@@ -53,7 +53,9 @@ export default {
         newAddress: "",
         newName: "",
         newTellphone: "",
-        setDefault: false
+        setDefault: false,
+        id: shortId(),
+        newselected:false
     }),
     components: {
         Top,
@@ -78,12 +80,13 @@ export default {
         addNewAddress() {
             const re = /^1([358][0-9]|4[579]|66|7[0135678]|9[89])[0-9]{8}$/;
             const receiving_address = {
-                id: shortId(),
+                id: this.id,
                 name: this.newName,
                 tellphone: this.newTellphone,
                 area: this.newArea,
                 detailed_address: this.newAddress,
-                setdefault: false
+                setdefault: this.setDefault,
+                is_selected:this.newselected
             };
             if (
                 this.newName.trim() !== "" &&
@@ -99,6 +102,8 @@ export default {
                     this.newTellphone = "";
                     this.newArea = "";
                     this.newAddress = "";
+                    this.setDefaultfalse;
+                    this.$router.push('/seladdress')
                 } else {
                     alert("手机号码有误，请重填");
                 }

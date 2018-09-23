@@ -18,6 +18,8 @@ import ConfirmOrder from "../components/ConfirmOrder";
 import Invoices from '../components/Invoices'
 import EditAddress from '../components/EditAddress'
 import CreateAddress from '../components/CreateAddress'
+import SelAddress from '../components/SelAddress'
+
 import Vue from "vue"; //导入vue
 Vue.use(VueRouter);
 const routes = [
@@ -32,8 +34,9 @@ const routes = [
   { path: "/register", component: Register },
   { path: "/phonelogin", component: PhoneLogin },
   { path: "/invoices", component: Invoices },
-  { path: '/editaddress', component: EditAddress },
+  { path: '/editaddress/:id', component: EditAddress },
   {path:'/createaddress',component:CreateAddress},
+  {path:'/seladdress',component:SelAddress},
   {
     path: "/shoppingcart",
     component: ShoppingCart,
