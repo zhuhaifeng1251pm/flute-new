@@ -67,6 +67,10 @@ export default {
       isCanPay(){
           return this.$store.getters.showGoods("isPay").every(t => t.is_selected===false)
       }
+  },mounted(){
+    this.$store.getters.showGoods("isPay").every(t => t.is_selected)
+        ? (this.checkAll = true)
+        : (this.checkAll = false);
   }
 };
 </script>

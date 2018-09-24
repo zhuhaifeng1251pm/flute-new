@@ -76,7 +76,8 @@ export default {
             this.$router.push('/paysuccess')
             const arr =this.$store.getters.showGoods('isPay')
             for(let i=0;i<arr.length;i++){
-                this.$store.commit('paySuce',arr[i].id)
+                if(arr[i].is_selected===true){ this.$store.commit('paySuce',arr[i].id)}
+               
             }
         }
     }

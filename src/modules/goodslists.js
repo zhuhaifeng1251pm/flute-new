@@ -132,6 +132,7 @@ const mutations = {
     state.goodslists.find(t => t.id === id).type = "completed";
   },
   paySuce(state,id){
+    
     state.goodslists.find(t => t.id === id).type = "isSend";
   },
   increaseCount(state, id) {

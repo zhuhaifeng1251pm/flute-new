@@ -1,82 +1,86 @@
 <template>
-  <div class="main">
-    <header>
-      <Top title='个人中心' :handleBack='handleBack' />
-      <div class="banner"></div>
-      <nav>
-        <ul>
-          <li @click="$store.commit('changeType','agentinfo')">
-            <router-link to='/agentinfo'> <img src="../assets/agent_12.png" alt="">
-              <span>独家代理</span>
-            </router-link>
-          </li>
-          <li @click="$store.commit('changeType','fluteinfo')">
-            <router-link to='/fluteinfo'><img src="../assets/news_12.png" alt="">
-              <span>肺笛简介</span>
-            </router-link>
-          </li>
-          <li @click="$store.commit('changeType','attract')">
-            <router-link to='/attract'>
-              <img src="../assets/attact_12.png" alt="">
-              <span>招商引资</span>
-            </router-link>
-          </li>
-          <li>
-            <router-link to='/myorder'><img src="../assets/myorder_12.png" alt="">
-              <span>我的订单</span>
-            </router-link>
-          </li>
-        </ul>
-      </nav>
-    </header>
-    <section>
-      <div class="top">
-        <h3>我的产品</h3>
-        <div class="goods">
-          <img src="../assets/proudct_03.png" alt="">
-          <div class="product">
-            <p>美国lung flute 正品 “肺笛” 正式进入中国</p>
-            <span>￥2880.00</span>
-            <div class="btnss">
-              <button @click="addShopCart">加入购物车</button>
-              <button @click="handleToCart();addShopCart()">立即购买</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="bottom">
-        <h3>
-          <router-link to='/newsinfo'>热点新闻</router-link>
-        </h3>
-        <ul>
-          <li>
-            <img src="../assets/news-pic_03.png" alt="">
-            <div class="detail">
-              <p>北京郎恒安生物科技有限公司核心团队由多名海外学者昨中国北京郎恒安生物科技有限公司核心团队由多名海外学者昨中国</p>
-              <span>查看更多</span>
-            </div>
-          </li>
-          <li>
-            <img src="../assets/news-pic_03.png" alt="">
-            <div class="detail">
-              <p>北京郎恒安生物科技有限公司核心团队由多名海外学者昨中国北京郎恒安生物科技有限公司核心团队由多名海外学者昨中国</p>
-              <span>查看更多</span>
-            </div>
-          </li>
-          <li>
-            <img src="../assets/news-pic_03.png" alt="">
-            <div class="detail">
-              <p>北京郎恒安生物科技有限公司核心团队由多名海外学者昨中国北京郎恒安生物科技有限公司核心团队由多名海外学者昨中国</p>
-              <span>查看更多</span>
-            </div>
-          </li>
-        </ul>
-        <span>查看更多</span>
-      </div>
-    </section>
-    <Footer/>
+    <div class="main">
+        <div class="shop" :class="{runner:run}" @click="$router.push('/shoppingcart/cartlists')">
+            <!-- <img src="http://pf9cvp4yn.bkt.clouddn.com/%E8%B4%AD%E7%89%A9%E8%BD%A6.svg" alt="" id="shopping"> -->
+            <span>{{$store.getters.showGoods('isPay').length}}</span>
 
-  </div>
+        </div>
+        <header>
+            <Top title='个人中心' :handleBack='handleBack' />
+            <div class="banner"></div>
+            <nav>
+                <ul>
+                    <li @click="$store.commit('changeType','agentinfo')">
+                        <router-link to='/agentinfo'> <img src="../assets/agent_12.png" alt="">
+                            <span>独家代理</span>
+                        </router-link>
+                    </li>
+                    <li @click="$store.commit('changeType','fluteinfo')">
+                        <router-link to='/fluteinfo'><img src="../assets/news_12.png" alt="">
+                            <span>肺笛简介</span>
+                        </router-link>
+                    </li>
+                    <li @click="$store.commit('changeType','attract')">
+                        <router-link to='/attract'>
+                            <img src="../assets/attact_12.png" alt="">
+                            <span>招商引资</span>
+                        </router-link>
+                    </li>
+                    <li>
+                        <router-link to='/myorder'><img src="../assets/myorder_12.png" alt="">
+                            <span>我的订单</span>
+                        </router-link>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <section>
+            <div class="top">
+                <h3>我的产品</h3>
+                <div class="goods">
+                    <img src="../assets/proudct_03.png" alt="">
+                    <div class="product">
+                        <p>美国lung flute 正品 “肺笛” 正式进入中国</p>
+                        <span>￥2880.00</span>
+                        <div class="btnss">
+                            <button @click="addShopCart">加入购物车</button>
+                            <button @click="handleToCart();addShopCart()">立即购买</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom">
+                <h3>
+                    <router-link to='/newsinfo'>热点新闻</router-link>
+                </h3>
+                <ul>
+                    <li>
+                        <img src="../assets/news-pic_03.png" alt="">
+                        <div class="detail">
+                            <p>北京郎恒安生物科技有限公司核心团队由多名海外学者昨中国北京郎恒安生物科技有限公司核心团队由多名海外学者昨中国</p>
+                            <span>查看更多</span>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="../assets/news-pic_03.png" alt="">
+                        <div class="detail">
+                            <p>北京郎恒安生物科技有限公司核心团队由多名海外学者昨中国北京郎恒安生物科技有限公司核心团队由多名海外学者昨中国</p>
+                            <span>查看更多</span>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="../assets/news-pic_03.png" alt="">
+                        <div class="detail">
+                            <p>北京郎恒安生物科技有限公司核心团队由多名海外学者昨中国北京郎恒安生物科技有限公司核心团队由多名海外学者昨中国</p>
+                            <span>查看更多</span>
+                        </div>
+                    </li>
+                </ul>
+                <span>查看更多</span>
+            </div>
+        </section>
+        <Footer/>
+    </div>
 </template>
 <script>
 import Top from "../components/top/Top";
@@ -84,6 +88,9 @@ import Footer from "../components/footer/Footer";
 import shortId from "shortid";
 export default {
     name: "home",
+    data:()=>({
+      run:false  
+    }),
     components: {
         Top,
         Footer
@@ -102,12 +109,16 @@ export default {
                 create_time: new Date(),
                 type: "isPay",
                 id: shortId(),
-                is_selected:true
+                is_selected: true
             };
             this.$store.commit("addShoppingCar", newGoods);
+            this.run=true
+            setTimeout(()=>{
+                this.run=false
+            },500)
         },
         handleToCart() {
-          this.$router.push("/shoppingcart/cartlists");
+            this.$router.push("/shoppingcart/cartlists");
         }
     }
 };
@@ -126,6 +137,31 @@ export default {
     flex-direction: column;
     align-items: center;
     overflow: hidden;
+    .shop {
+        position: fixed;
+        top: 50%;
+        right: .3rem;
+        width: 1rem;
+        height: 1rem;
+        background-image: url(http://pf9cvp4yn.bkt.clouddn.com/%E8%B4%AD%E7%89%A9%E8%BD%A6.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        span{
+            
+            display: block;
+            width: 0.3rem;
+            line-height: 0.3rem;
+            border-radius: 50%;
+            text-align: center;
+            color:#fff;
+            background-color: #1992ff;
+            border:1px solid #ccc;
+            position: fixed;
+            top: 50%;
+            right: 0.2rem;
+        }
+    }
     header {
         width: 100%;
         margin-bottom: 0.1rem;
@@ -291,5 +327,25 @@ export default {
             }
         }
     }
+    .runner {
+  animation: run 0.5s;
+}
+@keyframes run {
+  0% {
+    transform: scale(0.7);
+  }
+  25% {
+    transform: scale(1.3);
+  }
+  50% {
+    transform: scale(0.7);
+  }
+  75% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 }
 </style>
