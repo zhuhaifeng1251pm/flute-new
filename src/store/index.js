@@ -8,6 +8,8 @@ import goodsType from "../modules/goodsType";
 import goodslists from "../modules/goodslists";
 import start from "../modules/start";
 import address from "../modules/address";
+import id from "../modules/id";
+import personal from '../modules/personal'
 
 const store = new Vuex.Store({
     modules: {
@@ -16,7 +18,9 @@ const store = new Vuex.Store({
         goodsType: goodsType,
         goodslists: goodslists,
         start: start,
-        address: address
+        address: address,
+        id: id,
+        personal: personal
     }
 });
 

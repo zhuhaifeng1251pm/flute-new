@@ -131,11 +131,16 @@ const mutations = {
   confirmGoods(state, id) {
     state.goodslists.find(t => t.id === id).type = "completed";
   },
+  paySuce(state,id){
+    state.goodslists.find(t => t.id === id).type = "isSend";
+  },
   increaseCount(state, id) {
     state.goodslists.find(t => t.id === id).count++;
   },
   subCount(state, id) {
     state.goodslists.find(t => t.id === id).count--;
+  },cancelOrder(state,id){
+    state.goodslists.splice(state.goodslists.findIndex(t=>t.id===id))
   }
 };
 

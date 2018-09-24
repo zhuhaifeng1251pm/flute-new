@@ -1,91 +1,112 @@
 <template>
-  <div class="confirm-order">
-    <div class="address arrow" @click="handleSelAddress">
-      <h4>
-        <span>收货人：{{showAddress.name}}</span>
-        <span>{{showAddress.tellphone}}</span>
-      </h4>
-      <p>收货地址：{{showAddress.area}}{{showAddress.detailed_address}}</p>
-    </div>
-    <div class="pay-goods" v-for="good in showLists" :key='good.id'>
-      <img :src="good.img">
-      <aside>
-        <h3>{{good.name}}</h3>
-        <span>购买类型：肺笛单品</span>
-        <span>￥{{good.price*good.count}}</span>
-      </aside>
-      <span class="count">x{{good.count}}</span>
-    </div>
-    <div class="invoice arrow" @click="$router.push('/invoices')">
-      <b>发票</b>
-      <span>
-        <u>电子</u>（明细-{{$store.state.start.start}}）</span>
-    </div>
-    <ul class="discount">
-      <li class="arrow">
-        <b>优惠券</b>
-        <span>-￥10.00</span>
-      </li>
-      <li class="arrow">
-        <b>优惠码</b>
-        <span>-￥10.00</span>
-      </li>
-      <li class="arrow">
-        <b>积分</b>
-        <span>共3009积分</span>
-      </li>
-    </ul>
-    <div class="totals arrow">
-      <p>
-        <b>商品金额</b>
-        <span>￥{{$store.getters.isToPay.toFixed(2)}}</span>
-      </p>
-      <p>
-        <b>运费</b>
-        <span>+ ￥0.00
-          <u>（免运费）</u>
-        </span>
+    <div class="confirm-order">
+        <div class="address arrow" @click="handleSelAddress">
+            <h4>
+                <span>收货人：{{showAddress?showAddress.name:''}}</span>
+                <span>{{showAddress?showAddress.tellphone:''}}</span>
+            </h4>
+            <p>收货地址：{{showAddress?showAddress.area:''}}{{showAddress?showAddress.detailed_address:''}}</p>
+        </div>
+        <div class="pay-goods" v-for="good in showLists" :key='good.id'>
+            <img :src="good.img">
+            <aside>
+                <h3>{{good.name}}</h3>
+                <span>购买类型：肺笛单品</span>
+                <span>￥{{good.price*good.count}}</span>
+            </aside>
+            <span class="count">x{{good.count}}</span>
+        </div>
+        <div class="invoice arrow" @click="$router.push('/invoices')">
+            <b>发票</b>
+            <span>
+                <u>电子</u>（明细-{{$store.state.start.start}}）</span>
+        </div>
+        <ul class="discount">
+            <li class="arrow" @click="handleToCoupon">
+                <b>优惠券</b>
+                <span>-￥10.00</span>
+            </li>
+            <li class="arrow" @click="handleToConcession">
+                <b>优惠码</b>
+                <span>-￥10.00</span>
+            </li>
+            <li class="arrow">
+                <b>积分</b>
+                <span>共{{$store.state.personal.personal.integral}}积分</span>
+            </li>
+        </ul>
+        <div class="totals arrow">
+            <p>
+                <b>商品金额</b>
+                <span>￥{{$store.getters.isToPay.toFixed(2)}}</span>
+            </p>
+            <p>
+                <b>运费</b>
+                <span>+ ￥0.00
+                    <u>（免运费）</u>
+                </span>
 
-      </p>
+            </p>
+        </div>
+        <footer>
+            <span @click="handleBackCart">返回购物车</span>
+            <p>
+                <span>实付款</span>
+                <b>￥{{$store.getters.isToPay.toFixed(2)}}</b>
+            </p>
+            <Button type='warning' @click="Settlement" :disabled='$store.getters.isToPay!==0?false:true'>提交订单</Button>
+        </footer>
     </div>
-    <footer>
-      <p>
-        <span>实付款</span>
-        <b>￥{{$store.getters.isToPay.toFixed(2)}}</b>
-      </p>
-      <Button type='warning'>提交订单</Button>
-    </footer>
-  </div>
 </template>
 <script>
 export default {
     name: "confirmorder",
-    data:()=>({
-      showAddress:[]
+    data: () => ({
+        showAddress: null
     }),
     computed: {
         showLists() {
             return this.$store.getters
                 .showGoods("isPay")
                 .filter(t => t.is_selected === true);
-        }},
+        }
+        // showAddress(){
+        //   return this.$store.getters.showAddress(12323)
+        // }
+    },
     methods: {
         handleSelAddress() {
             this.$router.push("/seladdress");
+        },
+        handleToConcession() {
+            this.$router.push("/concession");
+        },
+        handleToCoupon() {
+            this.$router.push("/coupon");
+        },
+        Settlement() {
+            this.$router.push("/settlement");
+        },
+        handleBackCart() {
+            this.$router.push("/shoppingcart/cartlists");
+            console.log(1);
         }
     },
     mounted() {
-      this.showAddress=this.$store.getters.showAddress()
+        const id = this.$store.state.id.id;
+        this.showAddress = this.$store.getters.showAddress(id);
     }
-}
+};
 </script>
 <style lang="scss" scoped>
 .confirm-order {
     display: flex;
     width: 100%;
     height: 100%;
+    overflow: auto;
     flex-direction: column;
     background-color: #f5f5f5;
+    padding-bottom: .3rem;
     .address {
         background-color: #fff;
         width: 100%;
@@ -115,6 +136,7 @@ export default {
     }
     .pay-goods {
         width: 100%;
+        height: 1.5rem;
         background-color: #fff;
         display: flex;
         padding: 0.3rem 0.2rem;
@@ -220,6 +242,16 @@ export default {
         align-items: center;
         justify-content: flex-end;
         font-size: 0.28rem;
+        > span {
+            width: 1.2rem;
+            height: 1rem;
+            background-image: url(http://pf9cvp4yn.bkt.clouddn.com/%E8%BF%94%E5%9B%9E.svg);
+            background-repeat: no-repeat;
+            background-position: 0.6rem 0.4rem;
+            background-size: 50%;
+            margin-right: 0.5rem;
+            padding: 0.1rem;
+        }
         button {
             height: 100%;
             width: 2.5rem;

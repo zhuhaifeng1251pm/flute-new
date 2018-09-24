@@ -55,8 +55,8 @@
             </div>
             
               <div class="bottom" v-if="good.type==='isPay'">
-              <Button size='small'>取消订单</Button>
-              <Button size='small' class="orange-btn">去支付</Button>
+              <Button size='small' @click="$store.commit('cancelOrder',good.id)">取消订单</Button>
+              <Button size='small' class="orange-btn" @click="$router.push('/shoppingcart/cartlists')">去支付</Button>
             </div>
 
               <div class="bottom" v-if="good.type==='isSend'">

@@ -6,8 +6,7 @@ const state = {
             tellphone: "18701239847",
             area: "北京市大兴区亦庄经济开发区",
             detailed_address: "中和街14号B座301",
-            setdefault: true,
-            is_selected:true
+            setdefault: true
         },
         {
             id: "12323",
@@ -15,10 +14,7 @@ const state = {
             tellphone: "1870112239847",
             area: "北京市大兴区亦庄经济开发区",
             detailed_address: "中和街14号B座301",
-            setdefault: false,
-            is_selected:false
-
-            
+            setdefault: false
         }
     ]
 };
@@ -40,12 +36,12 @@ const mutations = {
         }
         state.address.find(t => t.id === id).setdefault = true;
     },
-    selectAdress(state,id){
-        for (let i = 0; i < state.address.length; i++) {
-            state.address[i].is_selected = false;
-        }
-        state.address.find(t => t.id === id).is_selected = true;
-    },
+    // selectAdress(state, id) {
+    //     for (let i = 0; i < state.address.length; i++) {
+    //         state.address[i].is_selected = false;
+    //     }
+    //     state.address.find(t => t.id === id).is_selected = true;
+    // },
     delAddress(state, id) {
         state.address.splice(state.address.findIndex(t => t.id === id), 1);
         if (state.address.length !== 0) {
@@ -87,13 +83,18 @@ const getters = {
             return state.address.find(t => t.id === id);
         };
     },
-    showAddress(state){
-        const arrs=state.address.filter(t=>t.setdefault===true)
-        return function(arr = arrs[0]){
-                    return arr
-        }
+    showAddress(state) {
+        const arrs = state.address.filter(t => t.setdefault === true);
+        return function(id) {
+            if (state.address.findIndex(t => t.id === id)===-1){
+                    return arrs[0]
+            }
+            else {
+                return state.address.find(t=>t.id===id)
+            }
+           
+        };
     }
-
 };
 
 const address = {

@@ -19,7 +19,10 @@ import Invoices from '../components/Invoices'
 import EditAddress from '../components/EditAddress'
 import CreateAddress from '../components/CreateAddress'
 import SelAddress from '../components/SelAddress'
-
+import Concession from '../components/Concession'
+import Coupon from '../components/Coupon'
+import Settlement from '../components/Settlement'
+import Paysuccess from '../components/Paysuccess';
 import Vue from "vue"; //导入vue
 Vue.use(VueRouter);
 const routes = [
@@ -37,6 +40,11 @@ const routes = [
   { path: '/editaddress/:id', component: EditAddress },
   {path:'/createaddress',component:CreateAddress},
   {path:'/seladdress',component:SelAddress},
+  {path:'/concession',component:Concession},
+  {path:'/coupon',component:Coupon},
+  {path:'/settlement',component:Settlement},
+  {path:'/paysuccess',component:Paysuccess},
+
   {
     path: "/shoppingcart",
     component: ShoppingCart,

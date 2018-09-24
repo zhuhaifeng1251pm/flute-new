@@ -54,8 +54,7 @@ export default {
         newName: "",
         newTellphone: "",
         setDefault: false,
-        id: shortId(),
-        newselected:false
+        id: shortId()
     }),
     components: {
         Top,
@@ -85,8 +84,7 @@ export default {
                 tellphone: this.newTellphone,
                 area: this.newArea,
                 detailed_address: this.newAddress,
-                setdefault: this.setDefault,
-                is_selected:this.newselected
+                setdefault: this.setDefault
             };
             if (
                 this.newName.trim() !== "" &&

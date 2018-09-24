@@ -4,31 +4,31 @@
       <Top title="个人资料" :handleBack='handleBack' />
     </header>
     <div class="main">
-      <img src="http://pcgnine5c.bkt.clouddn.com/timg.jpg" alt="">
+      <img :src="showPersonal.img" alt="">
       <ul>
         <li>
           <span>用户名</span>
-          <span>可爱的桃桃</span>
+          <span>{{showPersonal.name}}</span>
         </li>
         <li>
           <span>性别</span>
-          <span>女</span>
+          <span>{{showPersonal.sex}}</span>
         </li>
         <li>
           <span>出生日期</span>
-          <span>1993.09.08</span>
+          <span>{{showPersonal.birthday}}</span>
         </li>
         <li>
           <span>籍贯</span>
-          <span>河北省保定市区徐水县西村</span>
+          <span>{{showPersonal.native_place}}</span>
         </li>
         <li>
           <span>邮箱</span>
-          <span>18701239847@163.com</span>
+          <span>{{showPersonal.email}}</span>
         </li>
         <li>
           <span>病因</span>
-          <span>咳嗽</span>
+          <span>{{showPersonal.pathogeny}}</span>
         </li>
       </ul>
       <!-- <router-link to='/' class="to-out"> -->
@@ -53,6 +53,11 @@ export default {
             this.$store.commit("loginOut");
         }
         
+    }
+    ,computed:{
+        showPersonal(){
+          return this.$store.state.personal.personal
+        }
     }
 };
 </script>

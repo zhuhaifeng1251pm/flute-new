@@ -3,9 +3,9 @@
         <Top title='选择收货地址' :handleBack='handleBack' />
         <div class="main">
             <ul>
-                <li v-for=" address in showAddress" :key="address.id">
+                <li v-for=" (address,index) in showAddress" :key="address.id" @click='handleAddress(address.id)' >
                     <div class="up">
-                        <div class="check-box"><input type="checkbox" :id='`checkss${address.id}`' @change='handleAddress(address)' v-model="address.is_selected">
+                        <div class="check-box"><input type="checkbox" :id='`checkss${address.id}`' :ref='`inp${index}`'>
                             <label :for='`checkss${address.id}`'></label>
                         </div>
                         <article>
@@ -26,6 +26,7 @@
                     </div>
 
                 </li>
+                <!-- {{$store.getters.showAddress('12323')}} -->
             </ul>
         </div>
         <Button type='warning' @click="$router.push('/createaddress')">新建地址</Button>
@@ -42,11 +43,12 @@ export default {
         handleBack() {
             this.$router.push("/shoppingcart/confirmorder");
         },
-        handleAddress(address) {
-            if(address.is_selected){
-                this.$store.getters.showAddress(address)
-                this.$store.commit('selectAdress',address.id)
-            }
+        handleAddress(id) {
+                console.log(id)
+                // this.$store.commit('selectAdress',id)
+                this.$store.commit('getId',id)
+                // this.$refs.inp.style.checked=true
+            
         }
     },
     computed: {
