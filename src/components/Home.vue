@@ -109,6 +109,7 @@ export default {
                 create_time: new Date(),
                 type: "isPay",
                 id: shortId(),
+                discont:0,
                 is_selected: true
             };
             this.$store.commit("addShoppingCar", newGoods);

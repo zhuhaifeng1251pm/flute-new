@@ -15,14 +15,17 @@ import TrackDone from "../components/TrackDone";
 import ShoppingCart from "../components/ShoppingCart";
 import CartLists from "../components/CartLists";
 import ConfirmOrder from "../components/ConfirmOrder";
-import Invoices from '../components/Invoices'
-import EditAddress from '../components/EditAddress'
-import CreateAddress from '../components/CreateAddress'
-import SelAddress from '../components/SelAddress'
-import Concession from '../components/Concession'
-import Coupon from '../components/Coupon'
-import Settlement from '../components/Settlement'
-import Paysuccess from '../components/Paysuccess';
+import Invoices from "../components/Invoices";
+import EditAddress from "../components/EditAddress";
+import CreateAddress from "../components/CreateAddress";
+import SelAddress from "../components/SelAddress";
+import Concession from "../components/Concession";
+import Coupon from "../components/Coupon";
+import Settlement from "../components/Settlement";
+import Paysuccess from "../components/Paysuccess";
+import NewPassword from "../components/NewPassword";
+import Integral from "../components/Integral"
+import Details from '../components/Details'
 import Vue from "vue"; //导入vue
 Vue.use(VueRouter);
 const routes = [
@@ -37,14 +40,16 @@ const routes = [
   { path: "/register", component: Register },
   { path: "/phonelogin", component: PhoneLogin },
   { path: "/invoices", component: Invoices },
-  { path: '/editaddress/:id', component: EditAddress },
-  {path:'/createaddress',component:CreateAddress},
-  {path:'/seladdress',component:SelAddress},
-  {path:'/concession',component:Concession},
-  {path:'/coupon',component:Coupon},
-  {path:'/settlement',component:Settlement},
-  {path:'/paysuccess',component:Paysuccess},
-
+  { path: "/editaddress/:id", component: EditAddress },
+  { path: "/createaddress", component: CreateAddress },
+  { path: "/seladdress", component: SelAddress },
+  { path: "/concession", component: Concession },
+  { path: "/coupon", component: Coupon },
+  { path: "/settlement/:id", component: Settlement },
+  { path: "/paysuccess", component: Paysuccess },
+  { path: "/newpassword", component: NewPassword },
+  { path: "/integral", component: Integral },
+  { path: "/details/:id", component: Details },
   {
     path: "/shoppingcart",
     component: ShoppingCart,

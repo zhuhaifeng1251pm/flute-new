@@ -10,6 +10,7 @@ import start from "../modules/start";
 import address from "../modules/address";
 import id from "../modules/id";
 import personal from '../modules/personal'
+import myorder from '../modules/myorder'
 
 const store = new Vuex.Store({
     modules: {
@@ -20,7 +21,8 @@ const store = new Vuex.Store({
         start: start,
         address: address,
         id: id,
-        personal: personal
+        personal: personal,
+        myorder:myorder
     }
 });
 

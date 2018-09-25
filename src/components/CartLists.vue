@@ -21,7 +21,8 @@
                                     <span>{{good.count}}</span>
                                     <Button size='small' @click="$store.commit('increaseCount',good.id)">+</Button>
                                 </div>
-                                <span>￥{{good.price*good.count}}</span>
+                                <span>￥{{(good.price*good.count)}} 
+                                  </span>
                             </div>
                         </aside>
                     </div>
@@ -35,7 +36,7 @@
             </div>
             <div class="total">
                 <span>合计:</span>
-                <u>￥{{$store.getters.isToPay.toFixed(2)}}</u>
+                <u>￥{{($store.getters.isToPay*1).toFixed(2)}}</u>
             </div>
             <Button type='warning' size='large' @click="$router.push('/shoppingcart/confirmorder')" :disabled='isCanPay?true:false'>结算</Button>
         </footer>

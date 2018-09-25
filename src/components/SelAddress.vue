@@ -69,7 +69,7 @@ export default {
     right: 0;
     .main {
         width: 100%;
-        height: 100vh;
+        height: 87vh;
         background-color: #f5f5f5;
         ul {
             list-style: none;

@@ -30,6 +30,7 @@ const state = {
     //   "create_time": "2018-09-20T08:59:38.817Z",
     //   "type": "isPay",
     //   "id": 3,
+    // discont:0,
     // is_selected: true
     // },
     // {
@@ -39,6 +40,7 @@ const state = {
     //   "price": "2888",
     //   "create_time": "2018-09-20T08:59:38.973Z",
     //   "type": "isPay",
+    // discont:0,
     //   "id": 4,// is_selected: true
     // },
     {
@@ -89,6 +91,7 @@ const state = {
     //   "create_time": "2018-09-20T08:59:42.868Z",
     //   "type": "isPay",
     //   "id": 9,
+    // discont:0,
     // is_selected: true
     // },
     {

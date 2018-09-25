@@ -30,6 +30,13 @@
           <span>病因</span>
           <span>{{showPersonal.pathogeny}}</span>
         </li>
+        <li>
+          <span>个人积分</span>
+          <span>{{showPersonal.integral}}</span>
+        </li>
+        <li @click="myConcseeion">我的优惠卷</li>
+        <li @click="myCoupon">我的优惠码</li>
+        <li @click="newPassword">修改密码</li>
       </ul>
       <!-- <router-link to='/' class="to-out"> -->
       <Button type="warning" @click="loginToOut">退出登录</Button>
@@ -51,6 +58,12 @@ export default {
         loginToOut() {
             this.$router.push("/");
             this.$store.commit("loginOut");
+        },myConcseeion(){
+          this.$router.push('/concession')
+        },myCoupon(){
+          this.$router.push('/coupon')
+        },newPassword(){
+          this.$router.push('/newpassword')
         }
         
     }
@@ -75,7 +88,7 @@ export default {
     overflow: hidden;
     .main {
         width: 100%;
-        height: 95vh;
+        height: 87vh;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -96,7 +109,7 @@ export default {
                 width: 98%;
                 margin: 0 auto;
                 display: flex;
-                line-height: 1rem;
+                line-height: .7rem;
                 justify-content: space-between;
                 padding: 0 0.3rem 0 0.25rem;
                 background-image: url(http://pf9cvp4yn.bkt.clouddn.com/%E7%AE%AD%E5%A4%B4_%E5%8F%B3.svg);
@@ -111,6 +124,9 @@ export default {
             font-size: 0.3rem;
             font-weight: bolder;
             flex-shrink: 0;
+            position: absolute;
+            bottom: 0;
+            left: 0;
         }
     }
 }

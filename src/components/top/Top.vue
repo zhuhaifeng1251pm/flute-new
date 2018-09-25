@@ -21,6 +21,7 @@ export default {
 <style lang="scss" scoped>
  .top {
       width: 100%;
+      box-sizing: border-box;
       height: 0.8rem;
       background-color: #000;
       font-size: 0.3rem;

@@ -25,13 +25,14 @@
       </nav>
       <div class="goods-lists">
         <ul>
-          <li v-for="good in $store.getters.showGoods(titleTips) " :key='good.id' :style="{'order':good.type==='isPay'?'1':good.type==='isSend'?2:good.type==='isReceive'?3:4}">
+          <li v-for="good in $store.getters.showMyorder(titleTips) " :key='good.id' :style="{'order':good.type==='isPay'?'1':good.type==='isSend'?2:good.type==='isReceive'?3:4}" @click="$router.push(`/details/${good.id}`)">
             <div class="top">
               <!-- <span>2017.11.09</span> -->
               <span>{{$moment(good.create_time).format("YYYY MMM Do,hh:mm:ss a")}}</span>
-              <span>{{good.type}}</span>
+              <span>{{good.type==='isSend'?'待发货':good.type==='isPay'?'待支付':good.type==='isReceive'?'待收货':good.type==='completed'?'已完成':''}}</span>
             </div>
-            <div class="body">
+            <h3>实付：{{(good.total-good.coupon-good.concession-good.useIntergral).toFixed(2)}}</h3>
+            <div class="body" v-for="good in good.goods" :key='good.id'>
               <img :src="good.img">
               <aside>
                 <h3>{{good.name}}</h3>
@@ -54,13 +55,13 @@
             </div>
 
             <div class="bottom" v-if="good.type==='isPay'">
-              <Button size='small' @click="$store.commit('cancelOrder',good.id)">取消订单</Button>
-              <Button size='small' class="orange-btn" @click="$router.push('/shoppingcart/cartlists')">去支付</Button>
+              <Button size='small' @click.stop="$store.commit('delOrder',good.id)">取消订单</Button>
+              <Button size='small' class="orange-btn" @click.stop="$router.push(`/settlement/${good.id}`)">去支付</Button>
             </div>
 
             <div class="bottom" v-if="good.type==='isSend'">
               <Button size='small'>申请退款</Button>
-              <Button size='small'>提醒发货</Button>
+              <Button size='small' @click.stop="$store.commit('changeIsReceive',good.id)">提醒发货</Button>
               <Button size='small' class="orange-btn">再次购买</Button>
 
             </div>
@@ -68,8 +69,8 @@
             <div class="bottom" v-if="good.type==='isReceive'">
               <Button size='small'>申请退款</Button>
               <Button size='small'>再次购买</Button>
-              <Button size='small' @click="$router.push('/tracking/trackinfo')">查看物流</Button>
-              <Button size='small' type='warning' @click="confirmGoods(good.id,good.type)" :disabled='good.type==="completed"'>{{good.type!=='completed'?'确认收货':'已完成'}}</Button>
+              <Button size='small' @click.stop="$router.push('/tracking/trackinfo')">查看物流</Button>
+              <Button size='small' type='warning' @click.stop="$store.commit('changeCompleted',good.id)" :disabled='good.type==="completed"'>{{good.type!=='completed'?'确认收货':'已完成'}}</Button>
             </div>
 
           </li>
@@ -109,7 +110,7 @@ export default {
         // }
     },
     mounted() {
-        console.log(this.$store.state.goodslists.goodslists);
+        console.log(this.$store.state.myorder.myorder);
     }
 };
 </script>
@@ -169,7 +170,7 @@ export default {
                 list-style: none;
                 width: 100%;
                 display: flex;
-                flex-direction: column-reverse;
+                flex-direction: column;
                 li {
                     width: 100%;
                     padding: 0.2rem;
