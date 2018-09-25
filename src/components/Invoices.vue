@@ -8,13 +8,13 @@
                 <h3>发票类型</h3>
                 <span>纸质发票</span>
             </div>
-            <div class="start" :class="{isHeight:$store.state.start.start==='个人'}">
+            <div class="start" :class="{isHeight:$store.state.start.start.start==='个人'}">
                 <h4>发票抬头</h4>
-                <RadioGroup v-model="$store.state.start.start">
+                <RadioGroup v-model="$store.state.start.start.start">
                     <Radio label="个人"></Radio>
                     <Radio label="单位"></Radio>
                 </RadioGroup>
-                    <div class="inp-box" v-if="$store.state.start.start==='单位'">
+                    <div class="inp-box" v-if="$store.state.start.start.start==='单位'">
                         <Input v-model="company" style='margin-top: 0.2rem' placeholder="请在此填写单位名称" clearable/>
                         <Input v-model="Renumber" style='margin-top: 0.2rem' placeholder="请在此填写纳税人识别号" clearable/>
                     </div>
@@ -28,7 +28,7 @@
                 <Input v-model="detailed" type="textarea" placeholder="Enter something..." v-else style='height:3rem' size="large" />
             </article>
         </div>
-        <Button type='warning' @click="$router.push('shoppingcart/confirmorder')">确定</Button>
+        <Button type='warning' @click="beSure()">确定</Button>
     </div>
 </template>
 <script>
@@ -53,6 +53,15 @@ export default {
     },
     handleOpen() {
       this.show = false;
+    },beSure(){
+      const obj={
+        company:this.company,
+        Renumber:this.Renumber,
+        detailed:this.detailed
+      }
+      console.log(this.company,this.Renumber,this.detailed)
+      this.$store.commit('inputInfo',obj)
+      this.$router.push('shoppingcart/confirmorder')
     }
   }
 };
