@@ -1,7 +1,7 @@
 <template>
   <footer>
     <ul>
-      <li><img src="../../assets/bottom-home_06.png" alt="">
+      <li @click="$router.push('/home')"><img src="../../assets/bottom-home_06.png" alt="">
         <span>首页</span>
       </li>
       <li @click="$router.push('/personal')"><img src="../../assets/bottom-person_07.png" alt="">
